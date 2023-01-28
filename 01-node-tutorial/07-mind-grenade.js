@@ -6,3 +6,4 @@ function addValues() {
 }
 
 addValues()
+// just include this file w/ required() make addValues() is called from 03-modules.js

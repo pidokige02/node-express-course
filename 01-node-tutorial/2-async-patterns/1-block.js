@@ -4,16 +4,17 @@ const server = http.createServer((req, res) => {
   if (req.url === '/') {
     res.end('Home Page')
   }
-  if (req.url === '/about') {
-    // blocking code
-    for (let i = 0; i < 1000; i++) {
-      for (let j = 0; j < 1000; j++) {
+  else if (req.url === '/about') {
+    // blocking code to prevent eecution continue
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 10; j++) {
         console.log(`${i} ${j}`)
       }
     }
     res.end('About Page')
-  }
-  res.end('Error Page')
+  } else  // adding else to prevent system crash
+    res.end('Error Page')
+    // sending response make system crash happen
 })
 
 server.listen(5000, () => {

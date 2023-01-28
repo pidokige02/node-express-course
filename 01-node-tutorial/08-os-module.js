@@ -13,4 +13,5 @@ const currentOS = {
   totalMem: os.totalmem(),
   freeMem: os.freemem(),
 }
+// good examples on how to make object at run time
 console.log(currentOS)

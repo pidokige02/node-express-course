@@ -23,4 +23,6 @@ const server = http.createServer((req, res) => {
   }
 })
 
-server.listen(5000)
+server.listen(5000, function(){  // Starts a UNIX socket and listens for connections on the given path.
+  console.log("server started on port 5000");
+})
