@@ -38,6 +38,7 @@
         <div class="result"></div>
       </section>
     </main>
+    <!-- add axios to make http request easier -->
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
       integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
@@ -48,9 +49,9 @@
 
       const fetchPeople = async () => {
         try {
-          const { data } = await axios.get('/api/people')
-
-          const people = data.data.map((person) => {
+            // These codes fetch data from server and render it @frontend w/ below codes
+            const { data } = await axios.get('/api/people')
+            const people = data.data.map((person) => {
             return `<h5>${person.name}</h5>`
           })
           result.innerHTML = people.join('')
@@ -58,6 +59,7 @@
           result.innerHTML = `<div class="alert alert-danger">Can't Fetch Data</div>`
         }
       }
+
       fetchPeople()
       // submit form
       const btn = document.querySelector('.submit-btn')
@@ -71,6 +73,8 @@
           const { data } = await axios.post('/api/people', { name: nameValue })
           const h5 = document.createElement('h5')
           h5.textContent = data.person
+          // fetch data with key value
+          console.log("data.person",data.person);
           result.appendChild(h5)
         } catch (error) {
           // console.log(error.response)

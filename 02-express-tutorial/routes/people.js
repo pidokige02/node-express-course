@@ -9,15 +9,17 @@ const {
   deletePerson,
 } = require('../controllers/people')
 
+
+// below codes are valid as well
 // router.get('/', getPeople)
 // router.post('/', createPerson)
 // router.post('/postman', createPersonPostman)
 // router.put('/:id', updatePerson)
 // router.delete('/:id', deletePerson)
 
+// below codes are more sexy codes than above one
 router.route('/').get(getPeople).post(createPerson)
 router.route('/postman').post(createPersonPostman)
 router.route('/:id').put(updatePerson).delete(deletePerson)
 
 module.exports = router
-

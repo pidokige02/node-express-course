@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: false }))
 // parse json
 app.use(express.json())
 
+// define base route path as middlewaren
 app.use('/api/people', people)
 app.use('/login', auth)
 
