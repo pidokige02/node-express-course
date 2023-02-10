@@ -10,6 +10,13 @@ const customEmitter = new EventEmitter()
 // additional arguments
 // built-in modules utilize it
 
+// customEmitter.emit('response', 'john', 34)
+
+// customEmitter.emit('response')
+customEmitter.on('response', (name, id, age) => {
+  console.log(`data recieved user ${name} with id:${id}, age:${age}`)
+})
+
 customEmitter.on('response', (name, id) => {
   console.log(`data recieved user ${name} with id:${id}`)
 })
@@ -18,6 +25,9 @@ customEmitter.on('response', () => {
   console.log('some other logic here')
 })
 
+// order is important emit need to be located after .om codes
+customEmitter.emit('response', 'john', 34, 60)
+
 customEmitter.emit('response', 'john', 34)
 
-// customEmitter.emit('response')
+customEmitter.emit('response')
