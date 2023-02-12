@@ -12,12 +12,14 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 app.use(express.static('./public'));
 app.use(express.json());
 
+// route 는 모두 mainRouter 를 통한다.
+// /api/v1 is rootpath
 app.use('/api/v1', mainRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 const start = async () => {
   try {

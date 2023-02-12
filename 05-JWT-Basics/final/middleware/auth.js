@@ -8,7 +8,7 @@ const authenticationMiddleware = async (req, res, next) => {
     throw new UnauthenticatedError('No token provided')
   }
 
-  const token = authHeader.split(' ')[1]
+  const token = authHeader.split(' ')[1]  // fetch actual token excluding Bearer
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET)
