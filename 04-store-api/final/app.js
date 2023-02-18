@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
   res.send('<h1>Store API</h1><a href="/api/v1/products">products route</a>');
 });
 
+// setting up root route
 app.use('/api/v1/products', productsRouter);
 
 // products route
@@ -26,7 +27,7 @@ app.use('/api/v1/products', productsRouter);
 app.use(notFoundMiddleware);
 app.use(errorMiddleware);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 const start = async () => {
   try {

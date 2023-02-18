@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const productSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, 'product name must be provided'],
+    required: [true, 'product name must be provided'],  // custome error messages
   },
   price: {
     type: Number,
@@ -24,10 +24,10 @@ const productSchema = new mongoose.Schema({
   company: {
     type: String,
     enum: {
-      values: ['ikea', 'liddy', 'caressa', 'marcos'],
+      values: ['ikea', 'liddy', 'caressa', 'marcos'], // it can make it dynamically in adding value
       message: '{VALUE} is not supported',
     },
-    // enum: ['ikea', 'liddy', 'caressa', 'marcos'],
+    // enum: ['ikea', 'liddy', 'caressa', 'marcos'],  // it is fixed value
   },
 })
 

@@ -5,6 +5,8 @@ const getAllProductsStatic = async (req, res) => {
     .sort('price')
     .select('name price');
 
+    // .select('name price').limit(4);  // 결과를 4개로 limit 를 걸 수 있다.
+
   res.status(200).json({ products, nbHits: products.length });
 };
 const getAllProducts = async (req, res) => {
@@ -18,8 +20,9 @@ const getAllProducts = async (req, res) => {
     queryObject.company = company;
   }
   if (name) {
-    queryObject.name = { $regex: name, $options: 'i' };
+    queryObject.name = { $regex: name, $options: 'i' };  // i is cabs insensitive
   }
+  
   if (numericFilters) {
     const operatorMap = {
       '>': '$gt',
@@ -45,7 +48,7 @@ const getAllProducts = async (req, res) => {
   let result = Product.find(queryObject);
   // sort
   if (sort) {
-    const sortList = sort.split(',').join(' ');
+    const sortList = sort.split(',').join(' ');  // URL string 에서 , 를 제거하고 space 를 넣는다.
     result = result.sort(sortList);
   } else {
     result = result.sort('createdAt');
@@ -62,8 +65,9 @@ const getAllProducts = async (req, res) => {
   result = result.skip(skip).limit(limit);
   // 23
   // 4 7 7 7 2
+  // 4 skip, 7 7 7 2 (4 pages)
 
-  const products = await result;
+  const products = await result; // find 에서 걸리지 않고, 왜 마지막 result 값에서 awsit 가 걸리는지 모르겠다.
   res.status(200).json({ products, nbHits: products.length });
 };
 
