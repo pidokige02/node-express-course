@@ -45,4 +45,5 @@ UserSchema.methods.comparePassword = async function (canditatePassword) {
   return isMatch
 }
 
+// A model is a class with which we construct documents.
 module.exports = mongoose.model('User', UserSchema)

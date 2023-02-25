@@ -7,9 +7,10 @@ const getAllJobs = async (req, res) => {
   res.status(StatusCodes.OK).json({ jobs, count: jobs.length })
 }
 const getJob = async (req, res) => {
+
   const {
-    user: { userId },
-    params: { id: jobId },
+    user: { userId },  // userId is got from middleware
+    params: { id: jobId }, // id 에 있는 값을 jobId 로 대입하여 이후에 사용이 가능함
   } = req
 
   const job = await Job.findOne({
@@ -30,7 +31,7 @@ const createJob = async (req, res) => {
 
 const updateJob = async (req, res) => {
   const {
-    body: { company, position },
+    body: { company, position },  // company, position 로 req로 부터 data 가 들어간다.
     user: { userId },
     params: { id: jobId },
   } = req

@@ -23,7 +23,7 @@ const JobSchema = new mongoose.Schema(
       required: [true, 'Please provide user'],
     },
   },
-  { timestamps: true }
+  { timestamps: true }  // createdAt updatedAt 이 자동으로 만들어진다
 )
 
 module.exports = mongoose.model('Job', JobSchema)
